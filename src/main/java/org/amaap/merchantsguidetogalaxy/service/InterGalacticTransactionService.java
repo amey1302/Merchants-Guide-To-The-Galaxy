@@ -26,11 +26,8 @@ public class InterGalacticTransactionService {
         return 68;
     }
 
-    public List<String> readFile(String filePath) throws IOException, IllegalPathExtensionException {
-        return translationFileReader.readFile(filePath);
-    }
-
-    public Map<String, String> parser(List<String> lines) {
-        return translationFileParser.parse(lines) ;
+    public Map<String, String> readFileAndParse(String filePath) throws IOException, IllegalPathExtensionException {
+        List<String> lines = translationFileReader.readFile(filePath);
+        return translationFileParser.parse(lines);
     }
 }

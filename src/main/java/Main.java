@@ -11,19 +11,20 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws IllegalPathExtensionException, IOException {
-        String path = "D:\\AMAAP Training\\Project with mvc\\MerchantGuideToTheGalaxy" +
+        String filePath = "D:\\AMAAP Training\\Project with mvc\\MerchantGuideToTheGalaxy" +
                 "\\src\\test\\resources\\TranslationData.txt";
         Injector injector = Guice.createInjector(new SampleModule());
         //InterGalacticTransactionController controller = injector.getInstance(InterGalacticTransactionController.class);
         TranslationFileReader fileReader = new TranslationFileReader();
         TranslationFileParser fileParser = new TranslationFileParser();
         InterGalacticTransactionService service = new InterGalacticTransactionService(fileReader, fileParser);
-        List<String> lines = service.readFile(path);
-
-        for (String line : lines) {
+        List<String> lines = fileReader.readFile(filePath);
+        for (String line :lines) {
             System.out.println(line + "\n");
+
         }
-        Map<String, String> resultMap = service.parser(lines);
+        Map<String, String> resultMap = service.readFileAndParse(filePath);
+
         for (Map.Entry<String, String> entry : resultMap.entrySet()) {
             System.out.println(entry.getKey() + " : " + entry.getValue());
         }

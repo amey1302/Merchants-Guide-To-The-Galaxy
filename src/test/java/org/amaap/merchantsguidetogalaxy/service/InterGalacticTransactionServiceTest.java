@@ -14,16 +14,16 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
 class InterGalacticTransactionServiceTest {
-    TranslationFileReader translationFileReader;
-    TranslationFileParser translationFileParser;
+    TranslationFileReader fileReader;
+    TranslationFileParser fileParser;
     InterGalacticTransactionService service;
 
     @BeforeEach
     void setUp() {
-        translationFileParser = new TranslationFileParser();
-        translationFileReader = new TranslationFileReader();
+        fileParser = new TranslationFileParser();
+        fileReader = new TranslationFileReader();
 
-        service = new InterGalacticTransactionService(translationFileReader,translationFileParser);
+        service = new InterGalacticTransactionService(fileReader, fileParser);
     }
 
     @Test
@@ -32,27 +32,25 @@ class InterGalacticTransactionServiceTest {
         String filePath = "D:\\AMAAP Training\\Project with mvc\\MerchantGuideToTheGalaxy\\src\\test\\resources\\TranslationData.txt";
 
         // act
-        List<String> lines = service.readFile(filePath);
+        List<String> lines = fileReader.readFile(filePath);
 
         // assert
         assertEquals(12, lines.size());
         assertEquals("glob is I", lines.get(0));
     }
+
     @Test
     void shouldBeAbleToParseLinesAndReturnMaps() throws IllegalPathExtensionException, IOException {
         // arrange
         String filePath = "D:\\AMAAP Training\\Project with mvc\\MerchantGuideToTheGalaxy\\src\\test\\resources\\TranslationData.txt";
-
-        List<String> lines = service.readFile(filePath);
-        Map<String ,String> unitMap = new HashMap<>();
-        unitMap.put("glob","I");
-        unitMap.put("tegj","L");
-        unitMap.put("prok","V");
-        unitMap.put("pish","I");
-
+        Map<String, String> unitMap = new HashMap<>();
+        unitMap.put("glob", "I");
+        unitMap.put("tegj", "L");
+        unitMap.put("prok", "V");
+        unitMap.put("pish", "I");
 
         // act
-        Map<String, String> result = service.parser(lines);
+        Map<String, String> result = service.readFileAndParse(filePath);
 
         // assert
         assertNotNull(result);
