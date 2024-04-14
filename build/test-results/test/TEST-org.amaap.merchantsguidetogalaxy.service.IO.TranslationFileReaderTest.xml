@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.amaap.merchantsguidetogalaxy.service.IO.TranslationFileReaderTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-04-14T12:10:20" hostname="LAPTOP-205J7BQ6" time="0.034">
+  <properties/>
+  <testcase name="shouldThrowIllegalArgumentExceptionForInvalidFilePath()" classname="org.amaap.merchantsguidetogalaxy.service.IO.TranslationFileReaderTest" time="0.026"/>
+  <testcase name="shouldReadFileAndExcludeEmptyLines()" classname="org.amaap.merchantsguidetogalaxy.service.IO.TranslationFileReaderTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
