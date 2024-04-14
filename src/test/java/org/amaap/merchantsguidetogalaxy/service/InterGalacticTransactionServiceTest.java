@@ -3,27 +3,37 @@ package org.amaap.merchantsguidetogalaxy.service;
 import org.amaap.merchantsguidetogalaxy.IO.TranslationFileParser;
 import org.amaap.merchantsguidetogalaxy.IO.TranslationFileReader;
 import org.amaap.merchantsguidetogalaxy.IO.exception.IllegalPathExtensionException;
+import org.amaap.merchantsguidetogalaxy.repository.InterGalacticRepository;
+import org.amaap.merchantsguidetogalaxy.repository.impl.InMemoryInterGalacticRepository;
+import org.amaap.merchantsguidetogalaxy.repository.impl.db.InMemoryDataBase;
+import org.amaap.merchantsguidetogalaxy.repository.impl.db.impl.FakeDatabase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class InterGalacticTransactionServiceTest {
+    InMemoryDataBase inMemoryDataBase;
+    InterGalacticRepository repository;
+
     TranslationFileReader fileReader;
     TranslationFileParser fileParser;
     InterGalacticTransactionService service;
 
+
     @BeforeEach
     void setUp() {
+        inMemoryDataBase = new FakeDatabase();
+        repository = new InMemoryInterGalacticRepository(inMemoryDataBase);
         fileParser = new TranslationFileParser();
         fileReader = new TranslationFileReader();
 
-        service = new InterGalacticTransactionService(fileReader, fileParser);
+        service = new InterGalacticTransactionService(fileReader, fileParser,repository);
     }
 
     @Test
@@ -43,14 +53,15 @@ class InterGalacticTransactionServiceTest {
     void shouldBeAbleToParseLinesAndReturnMaps() throws IllegalPathExtensionException, IOException {
         // arrange
         String filePath = "D:\\AMAAP Training\\Project with mvc\\MerchantGuideToTheGalaxy\\src\\test\\resources\\TranslationData.txt";
-        Map<String, String> unitMap = new HashMap<>();
+        HashMap<String, String> unitMap = new LinkedHashMap<>();
         unitMap.put("glob", "I");
         unitMap.put("tegj", "L");
         unitMap.put("prok", "V");
         unitMap.put("pish", "I");
 
         // act
-        Map<String, String> result = service.readFileAndParse(filePath);
+        service.readFileAndParse(filePath);
+        HashMap<String ,String> result = service.getResultMap();
 
         // assert
         assertNotNull(result);
