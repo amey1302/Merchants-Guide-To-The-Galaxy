@@ -1,19 +1,25 @@
 package org.amaap.merchantsguidetogalaxy.service;
 
+import jakarta.inject.Inject;
+import org.amaap.merchantsguidetogalaxy.service.IO.TranslationFileReader;
+import org.amaap.merchantsguidetogalaxy.service.IO.exception.IllegalPathExtensionException;
+
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.List;
 
 public class InterGalacticTransactionService {
+    private TranslationFileReader translationFileReader;
+
+    @Inject
+    public InterGalacticTransactionService(TranslationFileReader translationFileReader) {
+        this.translationFileReader = translationFileReader;
+    }
+
     public double calculateCredits(String query) {
         return 68;
     }
-    public String readFile(String filePath) throws IOException {
-        try {
-            return Files.readString(Paths.get(filePath));
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+
+    public List<String> readFile(String filePath) throws IOException, IllegalPathExtensionException {
+        return translationFileReader.readFile(filePath);
     }
 }
