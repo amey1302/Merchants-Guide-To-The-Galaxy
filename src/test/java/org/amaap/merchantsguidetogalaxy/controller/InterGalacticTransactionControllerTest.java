@@ -1,6 +1,7 @@
 package org.amaap.merchantsguidetogalaxy.controller;
 
-import org.amaap.merchantsguidetogalaxy.service.IO.TranslationFileReader;
+import org.amaap.merchantsguidetogalaxy.IO.TranslationFileParser;
+import org.amaap.merchantsguidetogalaxy.IO.TranslationFileReader;
 import org.amaap.merchantsguidetogalaxy.service.InterGalacticTransactionService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,12 +9,17 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class InterGalacticTransactionControllerTest {
+    TranslationFileReader translationFileReader;
+    TranslationFileParser translationFileParser;
+    InterGalacticTransactionService service;
     InterGalacticTransactionController controller;
 
     @BeforeEach
     void setUp() {
-        controller = new InterGalacticTransactionController
-                (new InterGalacticTransactionService(new TranslationFileReader()));
+        translationFileParser = new TranslationFileParser();
+        translationFileReader = new TranslationFileReader();
+        service = new InterGalacticTransactionService(translationFileReader, translationFileParser);
+        controller = new InterGalacticTransactionController(service);
     }
 
     @Test

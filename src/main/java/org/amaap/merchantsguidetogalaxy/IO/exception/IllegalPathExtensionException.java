@@ -1,4 +1,4 @@
-package org.amaap.merchantsguidetogalaxy.service.IO.exception;
+package org.amaap.merchantsguidetogalaxy.IO.exception;
 
 public class IllegalPathExtensionException extends Exception {
     public IllegalPathExtensionException(String message) {

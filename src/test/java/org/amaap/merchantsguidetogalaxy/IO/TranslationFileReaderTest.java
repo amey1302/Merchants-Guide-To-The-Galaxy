@@ -1,6 +1,7 @@
-package org.amaap.merchantsguidetogalaxy.service.IO;
+package org.amaap.merchantsguidetogalaxy.IO;
 
-import org.amaap.merchantsguidetogalaxy.service.IO.exception.IllegalPathExtensionException;
+import org.amaap.merchantsguidetogalaxy.IO.TranslationFileReader;
+import org.amaap.merchantsguidetogalaxy.IO.exception.IllegalPathExtensionException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -34,5 +35,5 @@ class TranslationFileReaderTest {
         // Act & Assert
         assertThrows(IllegalPathExtensionException.class, () -> reader.readFile(filePath));
     }
-    
+
 }

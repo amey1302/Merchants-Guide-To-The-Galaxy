@@ -1,7 +1,8 @@
 package org.amaap.merchantsguidetogalaxy.controller;
 
 import jakarta.inject.Inject;
-import org.amaap.merchantsguidetogalaxy.service.IO.TranslationFileReader;
+import org.amaap.merchantsguidetogalaxy.IO.TranslationFileParser;
+import org.amaap.merchantsguidetogalaxy.IO.TranslationFileReader;
 import org.amaap.merchantsguidetogalaxy.service.InterGalacticTransactionService;
 
 public class InterGalacticTransactionController {
@@ -14,7 +15,11 @@ public class InterGalacticTransactionController {
 
     public double calculateCredits(String query) {
         TranslationFileReader fileReader = new TranslationFileReader();
-        InterGalacticTransactionService interGalacticTransactionService = new InterGalacticTransactionService(fileReader);
+        TranslationFileParser fileParser = new TranslationFileParser();
+
+
+        InterGalacticTransactionService interGalacticTransactionService = new
+                InterGalacticTransactionService(fileReader,fileParser);
         return interGalacticTransactionService.calculateCredits(query);
     }
 }

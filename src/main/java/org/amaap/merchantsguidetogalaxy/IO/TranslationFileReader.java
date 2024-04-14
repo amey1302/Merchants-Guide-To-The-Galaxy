@@ -1,6 +1,6 @@
-package org.amaap.merchantsguidetogalaxy.service.IO;
+package org.amaap.merchantsguidetogalaxy.IO;
 
-import org.amaap.merchantsguidetogalaxy.service.IO.exception.IllegalPathExtensionException;
+import org.amaap.merchantsguidetogalaxy.IO.exception.IllegalPathExtensionException;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
