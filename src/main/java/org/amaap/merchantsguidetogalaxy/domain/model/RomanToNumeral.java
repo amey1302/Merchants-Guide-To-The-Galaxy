@@ -7,6 +7,7 @@ public enum RomanToNumeral {
     L(50),
     X(10),
     V(5),
+
     I(1);
 
     private final int value;

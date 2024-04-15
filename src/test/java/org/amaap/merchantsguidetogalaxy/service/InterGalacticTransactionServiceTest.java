@@ -39,7 +39,8 @@ class InterGalacticTransactionServiceTest {
     @Test
     void shouldBeABleToReadDataFromFile() throws IOException, IllegalPathExtensionException {
         // arrange
-        String filePath = "D:\\AMAAP Training\\Project with mvc\\MerchantGuideToTheGalaxy\\src\\test\\resources\\TranslationData.txt";
+        String filePath = "D:\\AMAAP Training\\Project with mvc\\MerchantGuideToTheGalaxy\\src" +
+                "\\main\\resources\\TranslationData.txt";
 
         // act
         List<String> lines = fileReader.readFile(filePath);
@@ -52,7 +53,8 @@ class InterGalacticTransactionServiceTest {
     @Test
     void shouldBeAbleToParseLinesAndReturnMaps() throws IllegalPathExtensionException, IOException {
         // arrange
-        String filePath = "D:\\AMAAP Training\\Project with mvc\\MerchantGuideToTheGalaxy\\src\\test\\resources\\TranslationData.txt";
+        String filePath = "D:\\AMAAP Training\\Project with mvc\\MerchantGuideToTheGalaxy\\" +
+                "src\\main\\resources\\TranslationData.txt";
         HashMap<String, String> unitMap = new LinkedHashMap<>();
         unitMap.put("glob", "I");
         unitMap.put("tegj", "L");

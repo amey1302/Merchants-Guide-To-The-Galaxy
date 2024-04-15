@@ -13,7 +13,7 @@ class TranslationFileReaderTest {
     @Test
     void shouldReadFileAndExcludeEmptyLines() throws IOException, IllegalPathExtensionException {
         // arrange
-        String filePath = "D:\\AMAAP Training\\Project with mvc\\MerchantGuideToTheGalaxy\\src\\test" +
+        String filePath = "D:\\AMAAP Training\\Project with mvc\\MerchantGuideToTheGalaxy\\src\\main" +
                 "\\resources\\TranslationData.txt";
         TranslationFileReader reader = new TranslationFileReader();
 

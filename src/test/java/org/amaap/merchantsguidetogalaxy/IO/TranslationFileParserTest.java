@@ -13,20 +13,10 @@ class TranslationFileParserTest {
     @Test
     void ShouldBeAbleToParse_ValidInput_ReturnsCorrectMaps() throws IllegalPathExtensionException, IOException {
         // arrange
-        String filePath = "D:\\AMAAP Training\\Project with mvc\\MerchantGuideToTheGalaxy\\src\\test" +
+        String filePath = "D:\\AMAAP Training\\Project with mvc\\MerchantGuideToTheGalaxy\\src\\main" +
                 "\\resources\\TranslationData.txt";
         TranslationFileReader reader = new TranslationFileReader();
         List<String> lines = reader.readFile(filePath);
-        HashMap<String, String> expectedUnitMap = new LinkedHashMap<>();
-        expectedUnitMap.put("tegj", "L");
-        expectedUnitMap.put("glob", "I");
-        expectedUnitMap.put("prok", "V");
-        expectedUnitMap.put("pish", "X");
-
-        HashMap<String, String> expectedCreditMap = new LinkedHashMap<>();
-        expectedCreditMap.put("glob glob Silver", "34");
-        expectedCreditMap.put("glob prok Gold", "57800");
-        expectedCreditMap.put("pish pish Iron", "3910");
 
         // act
         TranslationFileParser parser = new TranslationFileParser();
