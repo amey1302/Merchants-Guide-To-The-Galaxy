@@ -65,21 +65,20 @@ Delegates responsibilities to the `InterGalacticService` for handling queries.
 - Behavior:
   - `double calculateCredits(String query)`: Invokes `interGalacticTransactionService.calculateCredits(query)`.
 
-### InterGalacticTransactionService
-
-Handles parsing input, reading files, and calculating credits.
-- IO:
-  - Readrer : 
-    - `String readFile(String path)`: Validates file paths and reads content.
+### IO
+  - TranslationFileReader :
+    - `String readFile(String path)`: Validates file paths and reads content and returns List<String> lines
   - Parsing:
     - `Map<String, String> parser(String lines)`: Parses units to Roman numerals, credits to units, and optional questions.
-- Calculation:
-  - `double calculateCredits(String query)`: Validates query using map content and calculates credits using `CreditCalculator`.
+
+### InterGalacticTransactionService
+- `public void readFileAndParse(String filePath)` : read and parse the file and stores data in the Repository.
+- `double calculateCredits(String query)`: Validates query using map content and calculates credits using `CreditCalculator`.
 ### Repository:
   - `InterGalacticTransactionRepository`: Stores data in the in-memory database.
     - Stores Data in InMemoryDatabase
+    - 
 ### Domain
-
 - Service:
   - `CreditCalculator`: Handles credit calculations.
 - Model:
