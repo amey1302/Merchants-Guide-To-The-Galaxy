@@ -58,6 +58,9 @@ Test Output:
 
 ## Solution Overview
 
+### Assumptions :
+1. Considered the fact that the Input File is a Source of Truth.
+
 ### InterGalacticTransactionController
 
 Delegates responsibilities to the `InterGalacticService` for handling queries.
